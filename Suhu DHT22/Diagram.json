@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Aldo Trita",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -18.9,
+      "left": -139.8,
+      "attrs": { "temperature": "10.8", "humidity": "56.5" }
+    },
+    { "type": "wokwi-dht22", "id": "dht2", "top": -18.9, "left": -216.6, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 6, "left": 176.6, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 6, "left": 215, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:SDA", "esp:14", "green", [ "v38.4", "h0.1" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht2:VCC", "esp:3V3", "red", [ "v28.8", "h134.4", "v-96" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v28.8", "h57.6", "v-96" ] ],
+    [ "dht2:SDA", "esp:13", "green", [ "v67.2", "h0.1" ] ],
+    [ "dht2:GND", "esp:GND.1", "black", [ "v57.6" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v28.8", "h-47.6", "v-48" ] ],
+    [ "led1:A", "esp:18", "green", [ "v57.6", "h-96" ] ],
+    [ "led2:A", "esp:19", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v28.8", "h-86", "v-48" ] ]
+  ],
+  "dependencies": {}
+}
