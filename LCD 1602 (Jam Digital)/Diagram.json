@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Aldo Trita",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -9.6,
+      "left": 4.84,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -41.6,
+      "left": 178.4,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -168.6, "left": -19.1, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-9.6", "v153.7", "h-19.2" ] ],
+    [ "lcd1:SCL", "esp:22", "blue", [ "h0" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h0" ] ],
+    [ "rtc1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "rtc1:SDA", "esp:21", "cyan", [ "h-28.8", "v105.3", "h67.2" ] ],
+    [ "rtc1:SCL", "esp:22", "yellow", [ "h-38.4", "v134.2", "h48" ] ]
+  ],
+  "dependencies": {}
+}
